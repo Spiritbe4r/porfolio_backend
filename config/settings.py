@@ -51,7 +51,7 @@ SECRET_KEY = 's_b=5%2n=!(dehix7vlv*r3*si)+kjob3ev=6k%kknv%sd#hk2'
 
 STATIC_URL = '/static/'
 
-ROOT_URLCONF = 'myportfolio.urls'
+ROOT_URLCONF = 'config.urls'
 
 ALLOWED_HOSTS = ['*']
 
@@ -67,10 +67,11 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'corsheaders',
 	'rest_framework',
-	'portfolio',
+	'portfolio.core',
+	'portfolio.commons'
 ]
 
-WSGI_APPLICATION = 'myportfolio.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 CORS_ALLOW_HEADERS = [
 	'x-requested-with',
