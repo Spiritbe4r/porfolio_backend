@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
-
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from portfolio.commons.models import BaseModel
 
 
@@ -10,11 +10,15 @@ from portfolio.commons.models import BaseModel
 class Userdetailmodel(BaseModel):
 	welcome_title = models.CharField(null=False, blank=False, max_length=100)
 	welcome_note = models.CharField(null=False, blank=False, max_length=255)
-	welcome_description = models.TextField(null=False, blank=False, max_length=255)
-	cv_link = models.TextField(null=False, blank=False, max_length=255)
+	welcome_description = models.TextField(null=False, blank=False, max_length=500)
+	cv_file = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
 	user_image = models.ImageField(null=False, blank=False, upload_to='images', max_length=255)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+
+	def __str__(self) -> str:
+		return super().__str__()
+	
 
 
 
@@ -25,12 +29,18 @@ class Usersociallink(BaseModel):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
+	def __str__(self) -> str:
+		return super().__str__() + self.name
+
 
 
 class Aboutcontent(BaseModel):
 	paragraph = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+
+	def __str__(self) -> str:
+		return super().__str__() 
 
 
 
@@ -43,6 +53,9 @@ class Experience(BaseModel):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
+	def __str__(self) -> str:
+		return super().__str__() + self.name
+
 
 
 class Experienceinput(BaseModel):
@@ -51,12 +64,15 @@ class Experienceinput(BaseModel):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
-
+	def __str__(self) -> str:
+		return super().__str__() + self.experience
 
 class Projecttool(BaseModel):
 	name = models.CharField(unique=True, max_length=100)
 	created_at = models.DateTimeField(auto_now_add=True)
 
+	def __str__(self) -> str:
+		return self.name
 
 
 class Project(BaseModel):

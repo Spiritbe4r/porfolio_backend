@@ -68,7 +68,10 @@ INSTALLED_APPS = [
 	'corsheaders',
 	'rest_framework',
 	'portfolio.core',
-	'portfolio.commons'
+	'portfolio.commons',
+
+	'cloudinary_storage',
+    'cloudinary',
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
@@ -99,8 +102,26 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
 
 AUTH_PASSWORD_VALIDATORS = [
-	'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-	'django.contrib.auth.password_validation.MinimumLengthValidator',
-	'django.contrib.auth.password_validation.CommonPasswordValidator',
-	'django.contrib.auth.password_validation.NumericPasswordValidator',
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dmnzrw08u',
+    'API_KEY': '381625279627336',
+    'API_SECRET': 'N5xkAvFtcPv9fDjsljzMLfU7jJg',
+}
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
