@@ -16,3 +16,5 @@ router.register('blog', BlogView, basename='blog')
 urlpatterns = [
 	path('', include(router.urls)),
 ]
+
+#
