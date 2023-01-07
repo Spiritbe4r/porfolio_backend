@@ -1,13 +1,27 @@
+# For more information, please refer to https://aka.ms/vscode-docker-python
 FROM python:3.9
 
-RUN mkdir /myportfolio
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /myportfolio
-
-COPY . /myportfolio/
+COPY . /myportfolio
 
 RUN pip install pip --upgrade && \
     pip install -r requirements.txt 
+
+
+
+
+# FROM python:3.9
+
+# RUN mkdir /myportfolio
+
+# WORKDIR /myportfolio
+
+# COPY . /myportfolio/
+
+
 
 # FROM python:3.9
 
