@@ -20,7 +20,7 @@ class AboutcontentView(ModelViewSet):
 
 
 class ExperienceView(ModelViewSet):
-	queryset = Experience.objects.all()
+	queryset = Experience.objects.all().order_by('-created_at')
 	serializer_class = ExperienceSerializer
 
 
