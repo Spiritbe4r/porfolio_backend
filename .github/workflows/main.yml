@@ -57,7 +57,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           envs: IMAGE_NAME,REGISTRY,{{ secrets.DIGITALOCEAN_ACCESS_TOKEN }},GITHUB_SHA
           script: |
-            cd portfolio_backend 
+            cd porfolio_backend 
             git pull origin main
-            echo 'deploy'
+            echo 'se hizo el pull request'
           
