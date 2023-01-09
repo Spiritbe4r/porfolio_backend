@@ -51,6 +51,7 @@ MIDDLEWARE = [
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 ROOT_URLCONF = 'config.urls'
 
