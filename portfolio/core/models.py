@@ -22,7 +22,7 @@ class Userdetailmodel(BaseModel):
         verbose_name_plural = "UserDetails"
 
     def __str__(self) -> str:
-        return super().__str__()
+        return self.welcome_title
 
 
 class Usersociallink(BaseModel):
@@ -36,7 +36,7 @@ class Usersociallink(BaseModel):
         verbose_name_plural = "UserSocialLinks"
 
     def __str__(self) -> str:
-        return super().__str__() + self.name
+        return self.name
 	
 
 
